@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -11,13 +10,13 @@
         android:id="@+id/buttonNode1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Node 1"
+        android:text="@string/node_1"
         android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/buttonNode2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Node 2" />
+        android:text="@string/node_2" />
 
 </LinearLayout>

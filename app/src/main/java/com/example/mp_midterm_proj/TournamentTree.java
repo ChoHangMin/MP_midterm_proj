@@ -1,6 +1,7 @@
 package com.example.mp_midterm_proj;
 
 public class TournamentTree {
+
     public TreeNode root;
     String [] playerNames;
 

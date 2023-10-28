@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MP_midterm_proj</string>
+    <string name="node_1">Node 1</string>
+    <string name="node_2">Node 2</string>
 </resources>

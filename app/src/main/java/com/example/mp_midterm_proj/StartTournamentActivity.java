@@ -3,6 +3,7 @@ package com.example.mp_midterm_proj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -23,16 +24,18 @@ public class StartTournamentActivity extends AppCompatActivity {
         String [] playerNames = {"a", "b", "c", "d"}; // test할 players array
         TournamentTree testTournament = new TournamentTree(playerNames); // TournamentTree testTournament 생성
 
-        int maxLevel = testTournament.getHeight(testTournament.root) + 1; // 최하단 레벨, player들이 들어갈 레벨을 구함. level = height + 1
+        int maxLevel = testTournament.getHeight(testTournament.root); // 최하단 레벨, player들이 들어갈 레벨을 구함. level = height + 1
 
         for (int i = maxLevel; i >= 0; --i) {
             bfsTraversalByLevel(testTournament.root,i); //최하단 레벨부터 따라 bfs 순회를 시작한다.
+            Log.d("MP_proj", "bfsTraversal level " + i);
         }
     }
     private final ActivityResultLauncher<Intent> mNodePairResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
+                    Log.d("MP_proj", "start mNodePairResultLauncher method.");
                     Intent data = result.getData(); // SelectNodeAcitivity로 부터 Intent를 받아온다.
                     TreeNode selectedNode = data.getParcelableExtra("selectedNode");
                     selectedNode.parent.playerName = selectedNode.playerName; // 선택된 부모노드를 선택된 값으로 채워넣는다.
@@ -53,15 +56,19 @@ public class StartTournamentActivity extends AppCompatActivity {
 
 
             if (TreeNodeLevel == targetLevel) { // 만약 targetLevel과 level이 같을 경우
+                Log.d("MP_proj", "check targetLevel" + targetLevel);
 
                 int j = 0; // pairNode index를 위한 변수
                 for (int i = 0; i < levelSize; ++i) {
                     TreeNode current = queue.poll(); // queue에서 값 빼내기
                     pairNode[j] = current; // 해당 값을 배열에 할당
+                    Log.d("MP_proj", "check pairNode" + i);
 
                     if (j == 1) { // 만약에 1일 경우, 즉 pairNode가 모두 찼을 경우
+                        Log.d("MP_proj", "full pairNode");
                         Intent intent = new Intent(StartTournamentActivity.this, SelectNodeActivity.class);
                         intent.putExtra("pairNode", pairNode); // StartTournamentActivity -> SelectNodeActivity로 pariNode객체를 넘겨준다.
+                        Log.d("MP_proj", "from startTournament to selectNodeActivity");
                         mNodePairResultLauncher.launch(intent); // 선택된 결과 값을 받아오는 함수.
 
                         try {

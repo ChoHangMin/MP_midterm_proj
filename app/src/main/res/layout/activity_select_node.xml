@@ -9,13 +9,11 @@
     <Button
         android:id="@+id/buttonNode1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/node_1" android:layout_marginBottom="8dp" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/buttonNode2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/node_2" />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

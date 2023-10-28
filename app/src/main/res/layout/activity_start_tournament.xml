@@ -11,4 +11,7 @@
         android:layout_height="wrap_content"
         android:text="안녕 나는 startTournament!" />
 
+
+
+
 </LinearLayout>

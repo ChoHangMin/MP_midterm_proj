@@ -43,6 +43,13 @@ class StartTournamentActivity : AppCompatActivity() {
                 }
 
             }
+            try {
+                launchShowWinnerActivity()
+
+            } catch (e : Exception) {
+                Log.e("MP_proj", "Error Message LauchShowWinnerActivity", e)
+            }
+
 
 
 
@@ -67,7 +74,15 @@ class StartTournamentActivity : AppCompatActivity() {
             testTournament.root
         ) // StartTournamentActivity -> SelectNodeActivity로 pariNode객체를 넘겨준다.
         Log.d("MP_proj", "Final Successfully put parcelableExtra into Intent")
-        startActivity(intent)
+
+        try {
+            startActivity(intent)
+
+        } catch (e : Exception) {
+            Log.e("MP_proj", "Error startActivity", e)
+
+        }
+
         Log.d("MP_proj", "Final process!")
     }
 

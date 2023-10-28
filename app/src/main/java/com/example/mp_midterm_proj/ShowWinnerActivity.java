@@ -9,7 +9,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-class ShowWinnerActivity extends AppCompatActivity {
+public class ShowWinnerActivity extends AppCompatActivity {
 
     Button buttonNode3;
 

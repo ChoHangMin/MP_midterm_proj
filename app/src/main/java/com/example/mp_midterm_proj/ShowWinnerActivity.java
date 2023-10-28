@@ -32,9 +32,6 @@ public class ShowWinnerActivity extends AppCompatActivity {
             buttonNode3.setText("결승 불러오기 실패");
         }
 
-
-
     }
-
 
 }

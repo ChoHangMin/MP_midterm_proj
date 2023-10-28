@@ -16,9 +16,6 @@ public class SelectNodeActivity extends AppCompatActivity {
     Button buttonNode1, buttonNode2; // 버튼 두개 생성
     TreeNode[] nodes; // 여기에 추가
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +28,10 @@ public class SelectNodeActivity extends AppCompatActivity {
 
         Intent intent = getIntent(); // StartTournament로 부터 intent를 받아옴
 
-
-
         try {
             Log.d("MP_proj", "Trying to get parcelableExtra from Intent");
 
+            // 이 block은 intent를 통해 넘겨받은 pairNode를 복호화해 변환하는 과정
             Parcelable[] parcelables = intent.getParcelableArrayExtra("pairNode");
             if (parcelables != null) {
                 nodes = new TreeNode[parcelables.length];
@@ -47,6 +43,7 @@ public class SelectNodeActivity extends AppCompatActivity {
                     Log.d("MP_proj", "TreeNode array received successfully");
                     Log.d("MP_proj", "Received Pair node " + nodes[0].playerName + nodes[1].playerName);
 
+                    // 버튼 두개의 값을 받아온 pairNode의 playerName element로 변환
                     buttonNode1.setText(nodes[0].playerName);
                     buttonNode2.setText(nodes[1].playerName);
 
@@ -61,13 +58,12 @@ public class SelectNodeActivity extends AppCompatActivity {
             Log.e("MP_proj", "Error while getting parcelableExtra: ", e);
         }
 
-
-
         buttonNode1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra("selectedNode", nodes[0]); // 0을 선택했을 경우 해당 결과를 다시 StartTournamentActivity에 반환
+                // 0을 선택했을 경우 해당 결과를 다시 StartTournamentActivity에 반환
+                resultIntent.putExtra("selectedNode", nodes[0]);
                 Log.d("MP_proj", "nodes " + nodes[0].playerName);
 
                 Log.d("MP_proj", "Returning result with selectedNode 0.");
@@ -85,6 +81,7 @@ public class SelectNodeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent resultIntent = new Intent();
+                // 1을 선택했을 경우 해당 결과를 다시 StartTournamentActivity에 반환
                 resultIntent.putExtra("selectedNode", nodes[1]);
                 Log.d("MP_proj", "nodes " + nodes[1].playerName);
 

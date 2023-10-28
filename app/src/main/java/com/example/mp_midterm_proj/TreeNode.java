@@ -15,7 +15,7 @@ public class TreeNode implements Parcelable { // TreeNode, playerName, left, rig
         Log.d("MP_proj", "Create TreeNode " + playerName);
     }
 
-    protected TreeNode(Parcel in) { // 이 아래는 Intent를 통해 TreeNode 객체를 넘길 수 있게 해주는 구문. 크게 중요치 않음
+    protected TreeNode(Parcel in) { // 이 아래는 Intent를 통해 TreeNode 객체를 넘길 수 있게 해주는 구문. 아래는 크게 중요치 않음
         playerName = in.readString();
         left = in.readParcelable(TreeNode.class.getClassLoader());
         right = in.readParcelable(TreeNode.class.getClassLoader());

@@ -4,6 +4,7 @@ public class TournamentTree {
 
     public TreeNode root;
     String [] playerNames;
+    int i = 1;
 
     public TournamentTree(String [] playerNames) { // playerNames 배열을 받아옴. 해당 사이즈는 n = 2^a의 형태여야함.
         this.playerNames = playerNames;
@@ -15,11 +16,12 @@ public class TournamentTree {
             return new TreeNode(playerNames[start - 1]); // baseCase, 일 경우 TreeNode의 element에 playerName 값을 assign함.
         }
 
+
         int mid = (start + end) / 2; // 트리를 분해해서 baseCase로 만들기 위한 식.
 
         TreeNode leftSubTree = buildTree(start, mid); // leftSubTree로 분해
         TreeNode rightSubTree = buildTree(mid + 1, end); // rightSubTree로 분해
-        TreeNode parentTree = new TreeNode("unknown_value"); // base Case를 제외한 경우 모든 노드의 값은 unknown_value로 할당
+        TreeNode parentTree = new TreeNode("unknown_value " + i++); // base Case를 제외한 경우 모든 노드의 값은 unknown_value로 할당
 
         parentTree.left = leftSubTree; // 트리를 생성하는 구문
         parentTree.right = rightSubTree;

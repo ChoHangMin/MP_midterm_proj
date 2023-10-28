@@ -22,8 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SelectNodeActivity"
-            android:exported="true">
+            android:name=".SelectNodeActivity">
         </activity>
     </application>
 
